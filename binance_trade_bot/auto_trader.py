@@ -116,7 +116,7 @@ class AutoTrader:
 #             transaction_fee = self.manager.get_fee(pair.from_coin, self.config.BRIDGE, True) + self.manager.get_fee(
 #                 pair.to_coin, self.config.BRIDGE, False
 #             )
-              transaction_fee = 0.001
+            transaction_fee = 0.001
 
             ratio_dict[pair] = (
                 coin_opt_coin_ratio - transaction_fee * self.config.SCOUT_MULTIPLIER * coin_opt_coin_ratio
