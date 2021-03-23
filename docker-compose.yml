@@ -8,14 +8,21 @@ services:
       - ./user.cfg:/app/user.cfg
       - ./data:/app/data
       - ./logs:/app/logs
+      - ./config:/app/config
+      - ./supported_coin_list:/app/supported_coin_list
+      - ./binance_trade_bot:/app/binance_trade_bot
     command: python -m binance_trade_bot
 
   api:
     image: edeng23/binance-trade-bot
     container_name: binance_trader_api
     volumes:
+      - ./user.cfg:/app/user.cfg
       - ./data:/app/data
       - ./logs:/app/logs
+      - ./config:/app/config
+      - ./supported_coin_list:/app/supported_coin_list
+      - ./binance_trade_bot:/app/binance_trade_bot
     ports:
       - 5123:5123
     command: gunicorn binance_trade_bot.api_server:app -k eventlet -w 1 --threads 1 -b 0.0.0.0:5123
